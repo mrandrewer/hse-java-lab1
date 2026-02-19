@@ -7,7 +7,32 @@ import java.util.Scanner;
 // Вариант 18
 public class App {
 
-    static final String numberInputError = "Некорректный ввод. Пожалуйста введите корректное число (например, 3.14, -5.2, 100).";
+    static final String intInputError = "Некорректный ввод. Пожалуйста введите корректное число (например, 1, 2, 123).";
+    static final String doubleInputError = "Некорректный ввод. Пожалуйста введите корректное число (например, 3.14, -5.2, 100).";
+
+    /**
+     * Ввод числа с плавающей точкой пользователем
+     * Тип значения int
+     * 
+     * @param scanner Сканер для получения данных ввода
+     * @param message Приглашение для ввода чисола
+     * @return Введенное число
+     */
+    static int readInt(Scanner scanner, String message) {
+        int result = 0;
+        boolean validInput = false;
+        do {
+            System.out.print(message);
+            try {
+                result = scanner.nextInt();
+                validInput = true;
+            } catch (InputMismatchException e) {
+                System.out.println(doubleInputError);
+            }
+            scanner.nextLine();
+        } while (!validInput);
+        return result;
+    }
 
     /**
      * Ввод числа с плавающей точкой пользователем
@@ -20,13 +45,13 @@ public class App {
     static double readDouble(Scanner scanner, String message) {
         double result = 0;
         boolean validInput = false;
-        System.out.print(message);
         do {
+            System.out.print(message);
             try {
                 result = scanner.nextDouble();
                 validInput = true;
             } catch (InputMismatchException e) {
-                System.out.println(numberInputError);
+                System.out.println(doubleInputError);
             }
             scanner.nextLine();
         } while (!validInput);
@@ -164,17 +189,31 @@ public class App {
 
     /**
      * Задача 2. Вычисление значения выражения
-     * 
-     * @param scanner Сканер для получения данных ввода
      */
     public static void task2() {
         System.out.println("Вычисление значения выражеиня");
         System.out.println("Тип float");
         calcExpressionFloat(1000f, 0.0001f);
-        calcExpressionDouble(1000d, 0.0001d);
-        calcExpressionDecimal(new BigDecimal(1000), new BigDecimal("0.0001"));
         System.out.println("Тип double");
+        calcExpressionDouble(1000d, 0.0001d);
         System.out.println("Тип BigDecimal");
+        calcExpressionDecimal(new BigDecimal(1000), new BigDecimal("0.0001"));
+    }
+
+    /**
+     * Задача 3. Вычисление среднего значения
+     * 
+     * @param scanner Сканер для получения данных ввода
+     */
+    public static void task3(Scanner scanner) {
+        System.out.println("Вычисление среднего значения последовательности");
+        int n = readInt(scanner, "Введите число элементов последовательности > ");
+        double sum = 0;
+        for (int i = 0; i < n; i++) {
+            double elem = readInt(scanner, String.format("Введите элемент %d > ", i + 1));
+            sum += elem / n;
+        }
+        System.out.println(String.format("Среднее значение последовательности: %f", sum));
     }
 
     /**
@@ -186,6 +225,7 @@ public class App {
         System.out.println("0 - Выход");
         System.out.println("1 - Проверка приналежности точки фигуре");
         System.out.println("2 - Вычисление значения выражения");
+        System.out.println("3 - Вычисление среднего значения");
     }
 
     /**
@@ -210,6 +250,9 @@ public class App {
                         break;
                     case 2:
                         task2();
+                        break;
+                    case 3:
+                        task3(scanner);
                         break;
                     case 0:
                         System.out.println("Выход из программы...");
