@@ -213,7 +213,30 @@ public class App {
             double elem = readInt(scanner, String.format("Введите элемент %d > ", i + 1));
             sum += elem / n;
         }
-        System.out.println(String.format("Среднее значение последовательности: %f", sum));
+        System.out.println(String.format("Среднее значение: %f", sum));
+    }
+
+    /**
+     * Задача 4. Вычисление минимального значения
+     * 
+     * @param scanner Сканер для получения данных ввода
+     */
+    public static void task4(Scanner scanner) {
+        System.out.println("Вычисление минимального значения последовательности");
+        System.out.println("Введите 0 для завершения ввода значений");
+        int min = Integer.MAX_VALUE;
+        int cur = 0;
+        do {
+            cur = readInt(scanner, "Введите элемент > ");
+            if (cur != 0 && cur < min) {
+                min = cur;
+            }
+        } while (cur != 0);
+        if (min == Integer.MAX_VALUE) {
+            System.out.println("Вы не ввели ни одного элемента!");
+        } else {
+            System.out.println(String.format("Минимальное значение: %d", min));
+        }
     }
 
     /**
@@ -226,6 +249,7 @@ public class App {
         System.out.println("1 - Проверка приналежности точки фигуре");
         System.out.println("2 - Вычисление значения выражения");
         System.out.println("3 - Вычисление среднего значения");
+        System.out.println("4 - Вычисление минимального значения");
     }
 
     /**
@@ -253,6 +277,9 @@ public class App {
                         break;
                     case 3:
                         task3(scanner);
+                        break;
+                    case 4:
+                        task4(scanner);
                         break;
                     case 0:
                         System.out.println("Выход из программы...");
