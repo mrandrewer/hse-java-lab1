@@ -208,6 +208,10 @@ public class App {
     public static void task3(Scanner scanner) {
         System.out.println("Вычисление среднего значения последовательности");
         int n = readInt(scanner, "Введите число элементов последовательности > ");
+        if (n < 1) {
+            System.out.println("Количество элементов не может быть меньше 1");
+            return;
+        }
         double sum = 0;
         for (int i = 0; i < n; i++) {
             double elem = readInt(scanner, String.format("Введите элемент %d > ", i + 1));
@@ -240,6 +244,25 @@ public class App {
     }
 
     /**
+     * Задача 4. Вычисление минимального значения
+     * 
+     * @param scanner Сканер для получения данных ввода
+     */
+    public static void task5(Scanner scanner) {
+        System.out.println("Вычисление элемента последовательности P");
+        int n = readInt(scanner, "Введите номер элемента последовательности > ");
+        if (n < 1) {
+            System.out.println("Номер элемента не может быть меньше 1");
+            return;
+        }
+        double p = 2. / 3;
+        for (int i = 2; i <= n; i++) {
+            p *= (2. * i) / (2. * i + 1);
+        }
+        System.out.println(String.format("Значение элемента %d: %f", n, p));
+    }
+
+    /**
      * Вывод главного меню
      */
     public static void printMenu() {
@@ -250,6 +273,7 @@ public class App {
         System.out.println("2 - Вычисление значения выражения");
         System.out.println("3 - Вычисление среднего значения");
         System.out.println("4 - Вычисление минимального значения");
+        System.out.println("5 - Вычисление элемента ряда");
     }
 
     /**
@@ -280,6 +304,9 @@ public class App {
                         break;
                     case 4:
                         task4(scanner);
+                        break;
+                    case 5:
+                        task5(scanner);
                         break;
                     case 0:
                         System.out.println("Выход из программы...");
