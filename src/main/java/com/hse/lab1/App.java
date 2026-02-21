@@ -122,8 +122,6 @@ public class App {
     }
 
     static void calcExpressionDouble(double a, double b) {
-        // Библиотека math приводит значения к double
-        // Чтобы избежать этого операции возведения в степень развернуты
 
         // первое слагаемое в числителе
         double num1 = Math.pow(a - b, 4);
@@ -155,8 +153,6 @@ public class App {
     }
 
     static void calcExpressionDecimal(BigDecimal a, BigDecimal b) {
-        // Библиотека BigDecimal приводит значения к BigDecimal
-        // Чтобы избежать этого операции возведения в степень развернуты
 
         // первое слагаемое в числителе
         BigDecimal num1 = a.subtract(b).pow(4);
@@ -191,7 +187,7 @@ public class App {
      * Задача 2. Вычисление значения выражения
      */
     public static void task2() {
-        System.out.println("Вычисление значения выражеиня");
+        System.out.println("Вычисление значения выражения");
         System.out.println("Тип float");
         calcExpressionFloat(1000f, 0.0001f);
         System.out.println("Тип double");
@@ -334,7 +330,7 @@ public class App {
     }
 
     /**
-     * Задача 4. Вычисление минимального значения
+     * Задача 5. Вычисление элемента последовательности
      * 
      * @param scanner Сканер для получения данных ввода
      */
@@ -353,7 +349,7 @@ public class App {
     }
 
     /**
-     * Задача 4. Вычисление минимального значения
+     * Задача 5. Вычисление элемента последовательности
      * 
      * @param scanner Сканер для получения данных ввода
      */
@@ -374,7 +370,7 @@ public class App {
     }
 
     /**
-     * Задача 4. Вычисление минимального значения
+     * Задача 5. Вычисление элемента последовательности
      * 
      * @param scanner Сканер для получения данных ввода
      */
